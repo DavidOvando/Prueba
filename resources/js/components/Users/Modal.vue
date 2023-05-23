@@ -55,8 +55,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="basic-default-fullname">Tipo De Acceso</label>
                                 <select class="form-select" v-model="user.tipo_acceso">
-                                    <option value="Admin">Admin</option>
-                                    <option value="Usuario">Usuario</option>
+                                    <option v-for="(rol, index) in roles" :key="index"  :value="rol.name">{{ rol.name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -94,6 +93,7 @@
                     tipo_acceso:""    
                 
                 },
+                roles:{},
                 tipo: '',
                 loading: false,
                 loading_data : false,
@@ -102,8 +102,17 @@
                 
             }
         },
+        created(){
+            this.getRoles()
+         },
         methods:{
-            
+            getRoles(){
+                axios.get('/roles/get').then(res=>{
+                    this.roles = res.data.roles
+                    this.load=true
+                    this.loading=true
+                })
+            },
             
             getData(id){
             axios.get(`/user/getData/${id}`).then(res=>{

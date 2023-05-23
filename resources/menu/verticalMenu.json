@@ -7,35 +7,18 @@
       "slug": "home-index"
     },
     {
-      "url": "/user/",
-      "name": "Usuarios",
-      "icon": "menu-icon tf-icons bx bxs-user",
-      "slug": "user-index"
+      "url": "/actor/",
+      "name": "Actores",
+      "icon": "menu-icon tf-icons bx bx-user-circle",
+      "slug": "actor-index"
     },
     {
-      "url": "/dependencia/",
-      "name": "Dependencias",
-      "icon": "menu-icon tf-icons bx bxs-bar-chart-alt-2",
-      "slug": "dependencias-index"
-    },
-    {
-      "url": "/periodo/",
-      "name": "Periodos",
-      "icon": "menu-icon tf-icons bx bxs-calendar",
-      "slug": "periodo-index"
-    },
-    {
-      "url": "/unidad/",
-      "name": "Unidades de Medida",
-      "icon": "menu-icon tf-icons bx bxs-detail",
-      "slug": "unidadMedida-index"
-    },
-    {
-      "url": "/roles/",
-      "name": "Roles",
-      "icon": "menu-icon tf-icons bx bxs-detail",
-      "slug": "roles-index"
+      "url": "/pelicula/",
+      "name": "Peliculas",
+      "icon": "menu-icon tf-icons bx bxs-camera-movie bx-m",
+      "slug": "pelicula-index"
     }
+
   ]
 
 }

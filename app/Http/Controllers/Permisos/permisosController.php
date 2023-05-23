@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PermisosController extends Controller
 {
     public function index(){
-        return view('Permisos.index');
+        return view('permisos.index');
     }
 
     public function get(){
@@ -36,5 +36,5 @@ class PermisosController extends Controller
         $permisos->delete();
         return response()->json(['status' => true]);
     }
-    
+
 }

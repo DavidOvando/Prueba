@@ -89,6 +89,15 @@
 
             
             },  
+            selectType(type, id = false){
+                this.type = type
+                if(id){
+                    this.id = id
+                }
+                this.loadPowerBi = false
+                this.loadTableRoles = true
+                this.loadTable = false
+            },
     }
 
 </script>

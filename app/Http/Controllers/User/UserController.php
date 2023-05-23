@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function __construct(){
+       // $this->middleware('can::role.admin')->only('index');
+    }
     public function index(){
         return view('Users.index');
     }
@@ -19,14 +23,17 @@ class UserController extends Controller
         return response()->json(['user' => $user]);
     }
     public function update(User $user, Request $request){
+        $request->merge(['password'=>bcrypt($request['password'])]);
         $user->update($request->all());
+        
         $user->save();
         return response()->json(['saved' => true]);
     }
 
-
     public function store(Request $request){
-        $user = User::create($request->post());
+        $request->merge(['password'=>bcrypt($request['password'])]);
+        $user = User::create($request->post());        
+        $user->assignRole($request->tipo_acceso);
         return response()->json([
             'user'=>$user
         ]);

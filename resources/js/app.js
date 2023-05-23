@@ -1,15 +1,17 @@
 import { createApp } from 'vue';
+import IndexLogin from './components/login/App.vue'
 import UserIndex from './components/Users/Index.vue';
-import PeriodosIndex from './components/Periodos/Index.vue';
-import DependenciasIndex from './components/Dependencias/Index.vue';
-import UnidadIndex from './components/Unidades/Index.vue';
+import ActorIndex from './components/Actores/Index.vue';
+import PeliculaIndex from './components/Peliculas/Index.vue';
 import RolesIndex from './components/Roles/Index.vue';
+import AsignarIndex from './components/Asignar/Index.vue'
 
 const app = createApp({});
 
+app.component('login-index', IndexLogin);
 app.component('user-index', UserIndex);
-app.component('periodo-index', PeriodosIndex);
-app.component('dependencia-index', DependenciasIndex);
-app.component('unidad-index', UnidadIndex);
+app.component('actor-index', ActorIndex);
+app.component('pelicula-index', PeliculaIndex);
 app.component('roles-index', RolesIndex);
+app.component('asignar-index',AsignarIndex)
 app.mount('#app');

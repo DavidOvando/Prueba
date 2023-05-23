@@ -1,13 +1,13 @@
 <template>
     <form id="formAuthentication" class="mb-3" @submit.prevent="login">
         <div class="mb-3">
-            <label for="email" class="form-label">Correo</label>
+            <label for="email" class="form-label">Email</label>
             <input
                 type="text"
                 class="form-control"
                 id="email"
                 name="email-username"
-                placeholder="Enter your email or username"
+                placeholder="Enter your username"
                 autofocus
                 v-model="data.email"
             />
@@ -38,6 +38,7 @@
     </form>
 </template>
 <script>
+import axios from 'axios';
 export default{
     data(){
         return{

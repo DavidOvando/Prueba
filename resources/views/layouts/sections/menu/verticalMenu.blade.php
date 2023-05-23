@@ -4,9 +4,9 @@
     <div class="app-brand demo">
       <a href="{{url('/')}}" class="app-brand-link">
         <span class="app-brand-logo demo">
-          @include('_partials.macros',["width"=>25,"withbg"=>'#696cff'])
+          <i class='bx bx-movie-play bx-flip-horizontal bx-tada bx-m' ></i>
         </span>
-        <span class="app-brand-text demo menu-text fw-bold ms-2">Proyecto</span>
+        <span class="app-brand-text  menu-text fw-bold ms-2">Actor</span>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-autod-block d-xl-none">

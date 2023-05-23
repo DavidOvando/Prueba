@@ -3,9 +3,11 @@
     </div>
     <div class="col-12">
         <div class="col-12">
-            <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#modalPermisos" @click="action('insert')">
+            <div class="cold mb-6">
+                <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#modalPermisos" @click="action('insert')">
                 Nuevo registro
-            </button>
+                </button>
+            </div>
         </div>
         <div class="table-responsive">        
             <table class="table table-bordered table-permisos" id="tablapermisos" width="100%" cellspacing="0" >
@@ -46,7 +48,7 @@
     import axios from "axios";    	    
     import ModalPermisos from "./ModalPermisos.vue";
 
-    
+
     export default{
         
         components: {

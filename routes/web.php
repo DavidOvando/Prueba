@@ -1,14 +1,16 @@
 <?php
 use App\Http\Controllers\User\UserController;
-use App\Http\Controllers\Unidad\UnidadController;
-use App\Http\Controllers\Periodo\PeriodoController;
-use App\Http\Controllers\Dependencia\DependenciaController;
+use App\Http\Controllers\Asignar\AsignarController;
+use App\Http\Controllers\Actor\ActorController;
+use App\Http\Controllers\Actor\AsignarPeliculaController;
+use App\Http\Controllers\Pelicula\PeliculaController;
 use App\Http\Controllers\Roles\RolesController;
 use App\Http\Controllers\Permisos\PermisosController;
 use App\Models\Users;
-use App\Models\Unidades;
-use App\Models\Periodos;
-use App\Models\Dependencias;
+use App\Models\Asignar;
+use App\Models\AsignarPelicula;
+use App\Models\Actores;
+use App\Models\Pelicula;
 use App\Models\Roles;
 use App\Models\Permisos;
 use Illuminate\Support\Facades\Route;
@@ -24,8 +26,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
-
+Route::middleware(['auth'])->group(function () {
 // Main Page Route
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home-index');
@@ -39,32 +44,30 @@ Route::prefix('user')->controller(UserController::class)->group(function () {
     Route::post('/update/{user}', 'update')->name('user.update');
     Route::get('/getData/{user}', 'getData')->name('user.get.data');
 });
-//Dependencia
-Route::prefix('dependencia')->controller(DependenciaController::class)->group(function () {
-    Route::get('/', 'index')->name('dependencias.index');
-    Route::post('/store', 'store')->name('dependencia.store');
-    Route::get('/get', 'get')->name('dependencia.get');
-    Route::get('/delete/{dependencia}', 'delete')->name('dependencia.delete');
-    Route::post('/update/{dependencia}', 'update')->name('dependencia.update');
-    Route::get('/getData/{dependencia}', 'getData')->name('dependencia.get.data');
+//Actor
+Route::prefix('actor')->controller(ActorController::class)->group(function () {
+    Route::get('/', 'index')->name('actor.index');
+    Route::post('/store', 'store')->name('actor.store');
+    Route::get('/get', 'get')->name('actor.get');
+    Route::get('/delete/{actor}', 'delete')->name('actor.delete');
+    Route::post('/update/{actor}', 'update')->name('actor.update');
+    Route::get('/getData/{actor}', 'getData')->name('actor.get.data');
+    Route::get('/getBusqueda/{actor}', 'getBusqueda')->name('actor.get.busqueda');
 });
-//Periodo
-Route::prefix('periodo')->controller(PeriodoController::class)->group(function () {
-    Route::get('/', 'index')->name('periodo.index');
-    Route::post('/store', 'store')->name('periodo.store');
-    Route::get('/get', 'get')->name('periodo.get');
-    Route::get('/delete/{periodo}', 'delete')->name('periodo.delete');
-    Route::post('/update/{periodo}', 'update')->name('periodo.update');
-    Route::get('/getData/{periodo}', 'getData')->name('periodo.get.data');
+//Pelicula
+Route::prefix('pelicula')->controller(PeliculaController::class)->group(function () {
+    Route::get('/', 'index')->name('pelicula.index');
+    Route::post('/store', 'store')->name('pelicula.store');
+    Route::get('/get', 'get')->name('pelicula.get');
+    Route::get('/delete/{pelicula}', 'delete')->name('pelicula.delete');
+    Route::post('/update/{pelicula}', 'update')->name('pelicula.update');
+    Route::get('/getData/{pelicula}', 'getData')->name('pelicula.get.data');
+    Route::get('/getBusqueda/{pelicula}', 'getBusqueda')->name('pelicula.get.busqueda');
 });
-//Unidad de Medida
-Route::prefix('unidad')->controller(UnidadController::class)->group(function () {
-    Route::get('/', 'index')->name('unidad.index');
-    Route::post('/store', 'store')->name('unidad.store');
-    Route::get('/get', 'get')->name('unidad.get');
-    Route::get('/delete/{unidad}', 'delete')->name('unidad.delete');
-    Route::post('/update/{unidad}', 'update')->name('unidad.update');
-    Route::get('/getData/{unidad}', 'getData')->name('unidad.get.data');
+//AsignarPeliculas
+Route::prefix('asignarPelicula')->controller(AsignarPeliculaController::class)->group(function () {
+    Route::post('/store', 'store')->name('asignarPelicula.store');
+    Route::get('/get', 'get')->name('asignarPelicula.get');
 });
 //Roles
 Route::prefix('roles')->controller(RolesController::class)->group(function () {
@@ -83,4 +86,13 @@ Route::prefix('permisos')->controller(PermisosController::class)->group(function
     Route::get('/delete/{permisos}', 'delete')->name('permisos.delete');
     Route::post('/update/{permisos}', 'update')->name('permisos.update');
     Route::get('/getData/{permisos}', 'getData')->name('permisos.get.data');
+});
+//Asignar
+Route::prefix('asignar')->controller(AsignarController::class)->group(function () {
+    Route::get('/', 'index')->name('asignar.index');
+    Route::get('/getPermiso/{User}', 'getData')->name('permiso.get.permiso');
+    Route::get('/getPermiso/{User}', 'getData')->name('permiso.get.permiso');
+    Route::post('/storeRole', 'storeRole')->name('asignar.store.role');
+    
+});
 });

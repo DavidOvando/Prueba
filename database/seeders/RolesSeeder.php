@@ -26,23 +26,18 @@ class RolesSeeder extends Seeder
         Permission::create(['name'=>'User.editar'])->assignRole($role1);
         Permission::create(['name'=>'User.eliminar'])->assignRole($role1);
 
-        //Dependencia
-        Permission::create(['name'=>'Dependencia.ver'])->syncRoles([$role1,$role2]);
-        Permission::create(['name'=>'Dependencia.crear'])->syncRoles([$role1,$role2]);
-        Permission::create(['name'=>'Dependencia.editar'])->syncRoles([$role1,$role2]);
-        Permission::create(['name'=>'Dependencia.eliminar'])->syncRoles([$role1,$role2]);
 
-        //Peridodo
-        Permission::create(['name'=>'Periodo.ver'])->syncRoles([$role1,$role2]);
-        Permission::create(['name'=>'Periodo.crear'])->syncRoles([$role1,$role2]);
-        Permission::create(['name'=>'Periodo.editar'])->syncRoles([$role1,$role2]);
-        Permission::create(['name'=>'Periodo.eliminar'])->syncRoles([$role1,$role2]);
+        //Actor
+        Permission::create(['name'=>'Actor.ver'])->syncRoles([$role1,$role2]);
+        Permission::create(['name'=>'Actor.crear'])->syncRoles([$role1,$role2]);
+        Permission::create(['name'=>'Actor.editar'])->syncRoles([$role1,$role2]);
+        Permission::create(['name'=>'Actor.eliminar'])->syncRoles([$role1,$role2]);
 
-        //Unidades
-        Permission::create(['name'=>'Unidades.ver'])->syncRoles([$role1,$role2]);
-        Permission::create(['name'=>'Unidades.crear'])->syncRoles([$role1,$role2]);
-        Permission::create(['name'=>'Unidades.editar'])->syncRoles([$role1,$role2]);
-        Permission::create(['name'=>'Unidades.eliminar'])->syncRoles([$role1,$role2]);
+        //Pelicula
+        Permission::create(['name'=>'Pelicula.ver'])->syncRoles([$role1,$role2]);
+        Permission::create(['name'=>'Pelicula.crear'])->syncRoles([$role1,$role2]);
+        Permission::create(['name'=>'Pelicula.editar'])->syncRoles([$role1,$role2]);
+        Permission::create(['name'=>'Pelicula.eliminar'])->syncRoles([$role1,$role2]);
 
         
     }
